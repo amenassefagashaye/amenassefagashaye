@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMEN YouTube & GOGS Telegram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 40px;
+            margin: 20px;
+            font-size: 20px;
+            color: white;
+            background-color: green;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn.disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AMEN YouTube & GOGS Telegram</h1>
+
+    <!-- Redirect to YouTube to Subscribe -->
+    <button id="subscribeBtn" class="btn" onclick="redirectToYouTube()">
+        Subscribe to AMEN YouTube Channel
+    </button>
+
+    <br>
+
+    <!-- Disabled Join Telegram Button -->
+    <a id="telegramBtn" class="btn disabled" href="#" onclick="checkSubscription()">
+        Join GOGS Telegram Channel
+    </a>
+
+    <script>
+        // Function to redirect user to YouTube subscription link
+        function redirectToYouTube() {
+            // Open YouTube subscription link in a new tab
+            window.open("https://www.youtube.com/channel/UCLBivSEh30F44ptAAgEVRUA?sub_confirmation=1", "_blank");
+            // Enable Telegram button after the user has visited YouTube
+            setTimeout(function() {
+                alert("Thanks for visiting the YouTube channel! You can now join the Telegram group.");
+                document.getElementById('telegramBtn').classList.remove('disabled');
+                document.getElementById('telegramBtn').href = "https://t.me/GOGSmore";
+            }, 3000); // Simulate a delay for subscription action
+        }
+
+        // Function to check if the Telegram button is clickable
+        function checkSubscription() {
+            if (document.getElementById('telegramBtn').classList.contains('disabled')) {
+                alert("Please subscribe to the YouTube channel before joining Telegram.");
+            }
+        }
+    </script>
+
+</body>
+</html>
